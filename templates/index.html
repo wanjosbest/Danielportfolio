@@ -15,10 +15,14 @@
       <div class="brand">Daniel Geoffrey</div>
 
       <nav class="desktop-nav" aria-label="Primary">
-        <a href="#hero">Home</a>
+        <a href="{% url 'home' %}">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+           {% if user.is_authenticated %}
+        <a href="{% url 'upload_project' %}">Upload Product</a>
+      <a href="{% url 'logout' %}">Log Out</a>
+      {% endif %}
         <a class="cta-sm" href="#contact">Hire Me</a>
       </nav>
 
@@ -32,10 +36,13 @@
 
     <!-- Mobile nav panel -->
     <div class="mobile-nav" id="mobileNav" aria-hidden="true" style="display:none">
-      <a href="#hero">Home</a>
+      <a href="{% url 'home' %}">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">Log Out</a>
+      {% endif %}
       <a href="#contact" style="margin-top:.6rem;display:inline-block;padding:.6rem .8rem;background:var(--accent-2);border-radius:10px;color:#081019;font-weight:700">Hire Me</a>
     </div>
   </header>
@@ -146,7 +153,8 @@
         </div>
       </div>
     </section>
-
+  <center>  <div><h2><a href="{% url 'project_list' %}">Explore Projects </a></h2></div>
+</center>
     <!-- PROCESS -->
     <section id="process">
       <div class="wrap">
